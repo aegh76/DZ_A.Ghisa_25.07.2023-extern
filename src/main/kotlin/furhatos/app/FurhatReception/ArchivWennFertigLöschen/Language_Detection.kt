@@ -1,7 +1,6 @@
 
 import furhatos.app.blankskill1.flow.Parent
 import furhatos.flow.kotlin.*
-import furhatos.flow.kotlin.voice.PollyNeuralVoice
 import furhatos.flow.kotlin.voice.PollyVoice
 import furhatos.records.User
 import furhatos.util.Gender
@@ -45,7 +44,7 @@ val Grüße : State = state(Parent) {
             sprache = it.speech.language
         )
 
-        goto(Frage)
+        goto(Greeting)
     }
 
 
