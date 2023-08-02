@@ -10,7 +10,8 @@ class Nein : Intent() {
             "Falsch", "Das stimmt nicht so ganz", "Nein, ist falsch", "nope", "Falsch, das stimmt nicht", "Nö",
             "Maja", "Mara", "na", "naja", "na ja", "möchte ich nicht sagen","Hayır", "hiçbir şekilde hayır", "Doğru değil",
             "Yanlış", "Bu pek doğru değil", "Hayır, yanlış", "Yanlış, doğru değil", "No",  "incorrect", "Not correct",
-            "Wrong", "That's not right", "No, is wrong", "Wrong, that's not right"
+            "Wrong", "That's not right", "No, is wrong", "Wrong, that's not right","Nu", "Incorect", "Nu este corect",
+            "Greșit", "Nu este corect", "Nu, este greșit", "Greșit, nu este corect"
         )
     }
 }

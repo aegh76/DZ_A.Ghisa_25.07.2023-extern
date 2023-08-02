@@ -33,12 +33,11 @@ val Taxidriverdialogue01 : State = state(Parent){
             englishText = "Your client's dialysis starts at $dialysebeginn and ends at" + " $dialyseende I wish you a nice day",
             germanText =  "Die Dialyse ihres Kunden beginnt um $dialysebeginn und endet um" + "$dialyseende ich wünsche Ihnen einen schönen Tag",
             turkishText = "Müşterinizin diyalizi $dialysebeginn'de başlıyor ve" + " $dialyseende'de bitiyor İyi günler dilerim",
+            romanianText = "Dializa clientului dumneavoastră începe la $dialysebeginn start și se termină la" + "$dialyseende end Vă doresc o zi bună",
             sprache = Benutzer!!.get("sprache") as Language
         )
 
-        furhat.say("Die Dialyse ihres Kunden beginnt um $dialysebeginn und endet um" +
-                "$dialyseende ich wünsche Ihnen einen schönen Tag")
-
+        
 
         furhat.ledStrip.solid(java.awt.Color.GREEN)
         furhat.gesture(Gestures.Nod())

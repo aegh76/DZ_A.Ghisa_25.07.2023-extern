@@ -25,24 +25,30 @@ import furhatos.records.User
 
 //In der helper.kt sind alle benötigten Funktionen der Interaktion definiert.
 
-fun furhatask (furhat:Furhat, englishText: String, turkishText: String, germanText: String, sprache: Language) {
+fun furhatask (furhat:Furhat, englishText: String, turkishText: String, romanianText: String, germanText: String, sprache: Language) {
     if (sprache == Language.ENGLISH_US) {
         furhat.ask(text=englishText)
     }
     if (sprache == Language.TURKISH) {
         furhat.ask(text=turkishText)
     }
+    if (sprache == Language.ROMANIAN) {
+        furhat.ask(text=romanianText)
+    }
     if (sprache == Language.GERMAN) {
         furhat.ask(text=germanText)
     }
 }
 
-fun furhatsay (furhat:Furhat, englishText: String, turkishText: String, germanText: String, sprache: Language) {
+fun furhatsay (furhat:Furhat, englishText: String, turkishText: String, romanianText: String, germanText: String, sprache: Language) {
     if (sprache == Language.ENGLISH_US) {
         furhat.say(text=englishText)
     }
     if (sprache == Language.TURKISH) {
         furhat.say(text=turkishText)
+    }
+    if (sprache == Language.ROMANIAN) {
+        furhat.ask(text=romanianText)
     }
     if (sprache == Language.GERMAN) {
         furhat.say(text=germanText)

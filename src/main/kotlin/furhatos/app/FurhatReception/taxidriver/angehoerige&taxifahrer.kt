@@ -18,6 +18,7 @@ val AngehoerigeUndTaxifahrer : State = state(Parent) {
             englishText = "Are you here to bring someone or get someone?",
             germanText =  "Sind Sie hier, um Jemanden zu bringen beziehungsweise zu holen?",
             turkishText = "Buraya birini getirmeye mi yoksa almaya mı geldiniz?" ,
+            romanianText = "Ați venit să aduceți sau să aduceți pe cineva?",
             sprache = Benutzer!!.get("sprache") as Language)
 
 
@@ -42,6 +43,7 @@ val AngehoerigeUndTaxifahrer : State = state(Parent) {
             englishText = "Then please report to the front desk" + this.furhat.gesture(Gestures.Nod) + "Thank you.",
             germanText =  "Dann melden Sie sich bitte vorne beim Empfang" + this.furhat.gesture(Gestures.Nod) + "Danke",
             turkishText = "O zaman lütfen ön büroya rapor verin" + this.furhat.gesture(Gestures.Nod) + "Teşekkür ederim",
+            romanianText = "Atunci vă rugăm să vă prezentați la recepție" + this.furhat.gesture(Gestures.Nod) + "Mulțumesc",
             sprache = Benutzer!!.get("sprache") as Language)
 
             delay(2000)

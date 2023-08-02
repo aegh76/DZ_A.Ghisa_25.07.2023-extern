@@ -23,7 +23,11 @@ class Ja : Intent() {
             "sure you do", "sure",
             "yes I'll bring someone", "yes I'll get someone","Evet", "Kesinlikle", "Oldukça Doğru",  "Tam Olarak Doğru", "Evet, öyleyim", "evet, bu doğru", "evet", "var mı",  "evet var", "elbette var",
             "evet birini getireceğim", "evet birini getireceğim",  "Bu doğru", "Kesinlikle",
-            "evet getirmek için"
+            "evet getirmek için","Exact", "Corect", "Asta este",
+            "Da", "Absolut", "Destul de corect", "Exact", "Da, așa este",
+            "da, așa este", "da", "ai una", "da, ai", "da, sigur", "dar sigur",
+            "sigur că ai", "sigur",
+            "da, o să aduc pe cineva", "da, o să aduc pe cineva"
         )
     }
 }

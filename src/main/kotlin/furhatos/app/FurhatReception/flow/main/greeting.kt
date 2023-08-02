@@ -31,6 +31,8 @@ val Greeting : State = state(Parent) {
                     "oder haben Sie eine Patientennummer?",
             turkishText = "Merhaba Bir ${furhat.voice.emphasis("QR code")} " +
             "ya da bir hasta numaranız var mı?" ,
+            romanianText = "Bună ziua Aveți un ${furhat.voice.emphasis("QR code")} " +
+            "sau aveți un număr de pacient?",
             sprache = Benutzer!!.get("sprache") as Language
 
         )
@@ -42,6 +44,7 @@ val Greeting : State = state(Parent) {
             englishText = "Good, then I can help ${furhat.voice.emphasis("you")} further.",
             germanText =  "Gut, dann kann ich ${furhat.voice.emphasis("Ihnen")} weiterhelfen.",
             turkishText = "Güzel, o zaman ${furhat.voice.emphasis("size")} daha fazla yardımcı olabilirim.",
+            romanianText = "Bine, atunci pot să vă ajut  în continuare.",
             sprache = Benutzer!!.get("sprache") as Language)
 
 
@@ -75,6 +78,7 @@ val Greeting : State = state(Parent) {
             englishText = "Okay, then please show me your QR code.",
             germanText =  "Okay, dann zeig mir bitte dein QR-Code",
             turkishText = "Tamam, o zaman lütfen bana QR kodunuzu gösterin",
+            romanianText = "Bine, atunci vă rog să-mi arătați codul QR",
             sprache = Benutzer!!.get("sprache") as Language)
 
 
@@ -103,18 +107,20 @@ val Greeting : State = state(Parent) {
 
         furhatsay(furhat=this.furhat,
             englishText = "Alright, ${Benutzer!!.get("name")}. I would change ${furhat.voice.emphasis("please")} go to " +
-            " the room${furhat.voice.emphasis("$raumy")} + ${furhat.voice.pause("1000ms") }+ to bed  ${furhat.voice.emphasis("$platzx")} " +
+            " the room${furhat.voice.emphasis("$raumy")}  ${furhat.voice.pause("1000ms") } to bed  ${furhat.voice.emphasis("$platzx")} " +
             "to go. Your dialysis will start at $dialysebeginn start and end at $dialyseende end on $datum",
             germanText =  "Gut, ${Benutzer!!.get("name")}. Ich würde Sie ${furhat.voice.emphasis("bittten")} in " +
-                    "den Raum${furhat.voice.emphasis("$raumy")} + ${furhat.voice.pause("1000ms") }+ an den  Platz ${furhat.voice.emphasis("$platzx")} " +
+                    "den Raum${furhat.voice.emphasis("$raumy")}  ${furhat.voice.pause("1000ms") } an den  Platz ${furhat.voice.emphasis("$platzx")} " +
                     "zu gehen. Ihre Dialyse fängt um $dialysebeginn an und endet um $dialyseende am $datum",
             turkishText = "Şey, ${Benutzer!!.get("isim")}. Ben ${furhat.voice.emphasis("sor")}'ı oda" +
-            "${furhat.voice.emphasis("$raumy")} + ${furhat.voice.pause("1000ms") }+ Yer'a ${furhat.voice.emphasis("$platzx")} " +
+            "${furhat.voice.emphasis("$raumy")}  ${furhat.voice.pause("1000ms") } Yer'a ${furhat.voice.emphasis("$platzx")} " +
             "gitmek için. Diyaliziniz $dialysebeginn başlangıcında başlayacak ve $datum $dialyseende bitişinde sona erecektir",
+            romanianText = "Bine ${Benutzer!!.get("name")}., v-aș ruga să mergeți în camera. ${furhat.voice.emphasis("$raumy")}  " +
+                    "${furhat.voice.pause("1000ms") },la locul ${furhat.voice.emphasis("$platzx")}. Dializa dumneavoastră începe la $dialysebeginn  și se termină la $dialyseende la $datum",
             sprache = Benutzer!!.get("sprache") as Language)
 
 
-
+        delay(1500)
 
 
        /* furhat.say (
@@ -131,7 +137,28 @@ val Greeting : State = state(Parent) {
             englishText = "Current time and date: $formattedDateTime",
             germanText =  "Aktuelle Uhrzeit und Datum: $formattedDateTime",
             turkishText = "Geçerli saat ve tarih: $formattedDateTime",
+            romanianText = "Data și ora curentă: $formattedDateTime",
             sprache = Benutzer!!.get("sprache") as Language)
+
+
+        delay(1500)
+
+        furhatsay(furhat=this.furhat,
+            englishText = "I hope I could help you have a ${furhat.voice.emphasis("beautiful")} day",
+            germanText =  "Ich hoffe ich konnte Ihnen helfen, einen ${furhat.voice.emphasis("schönen")} Tag noch",
+            turkishText = "Umarım bir ${furhat.voice.emphasis("güzel")} sahibi olmanıza yardımcı olabilirim. gün henüz",
+            romanianText = "Sper că v-aș putea ajuta să aveți inca o zi ${furhat.voice.emphasis("frumoasă")} ",
+            sprache = Benutzer!!.get("sprache") as Language)
+
+        furhat.gesture(Gestures.Nod())
+        furhat.gesture(Gestures.BigSmile)
+
+        //Für 8 Sekunden hört Furhat dann seinem Gesprächspartner zu, falls noch Fragen bezüglich der Platzinformation
+        //offen sind, kann furhat die Informationen nochmal wiederholen. Der State wird dann nicht nochmal von vorne
+        //begonnen, sondern startet bei onReentry (Zeile 65).
+        furhat.listen(timeout = 8000)
+
+
 
 
 
@@ -154,10 +181,17 @@ val Greeting : State = state(Parent) {
         furhat.attend(user= current)
         goto(AngehoerigeUndTaxifahrer)
     }
+
     onResponse<FrageWiederholen> {
         furhat.attend(user= current)
         reentry()
     }
+
+    onResponse<WelcherPlatzRaum> {
+        furhat.attend(user= current)
+        reentry()
+    }
+
     onResponseFailed {
         reentry()
     }

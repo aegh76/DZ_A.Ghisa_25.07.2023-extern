@@ -43,6 +43,8 @@ val Informationsdialogue : State = state(Parent) {
             turkishText = "Şey, ${Benutzer!!.get("isim")}. Ben ${furhat.voice.emphasis("sor")}'ı oda" +
                     "${furhat.voice.emphasis("$raumy")} ${furhat.voice.pause("1200ms") } Yer'a ${furhat.voice.emphasis("$platzx")} ${furhat.voice.pause("1200ms") }" +
                     "gitmek için. Diyaliziniz ${furhat.voice.emphasis("$dialysebeginn")} başlangıcında başlayacak ve $datum ${furhat.voice.emphasis("$dialyseende")} bitişinde sona erecektir",
+            romanianText = "Bine ${Benutzer!!.get("name")}., v-aș ruga să mergeți în camera. ${furhat.voice.emphasis("$raumy")}  " +
+                    "${furhat.voice.pause("1000ms") },la locul ${furhat.voice.emphasis("$platzx")}. Dializa dumneavoastră începe la $dialysebeginn  și se termină la $dialyseende la $datum",
             sprache = Benutzer!!.get("sprache") as Language)
 
         delay(1500)
@@ -51,6 +53,7 @@ val Informationsdialogue : State = state(Parent) {
             englishText = "the current time and date is: $formattedDateTime",
             germanText =  "Aktuelle Uhrzeit und Datum ist: $formattedDateTime",
             turkishText = "Geçerli saat ve tarih: $formattedDateTime",
+            romanianText = "Data și ora curentă: $formattedDateTime",
             sprache = Benutzer!!.get("sprache") as Language)
 
         delay(1500)
@@ -59,6 +62,7 @@ val Informationsdialogue : State = state(Parent) {
             englishText = "I hope I could help you have a ${furhat.voice.emphasis("beautiful")} day",
             germanText =  "Ich hoffe ich konnte Ihnen helfen, einen ${furhat.voice.emphasis("schönen")} Tag noch",
             turkishText = "Umarım bir ${furhat.voice.emphasis("güzel")} sahibi olmanıza yardımcı olabilirim. gün henüz",
+            romanianText = "Sper că v-aș putea ajuta să aveți inca o zi ${furhat.voice.emphasis("frumoasă")} ",
             sprache = Benutzer!!.get("sprache") as Language)
 
         furhat.gesture(Gestures.Nod())
@@ -68,7 +72,7 @@ val Informationsdialogue : State = state(Parent) {
         //offen sind, kann furhat die Informationen nochmal wiederholen. Der State wird dann nicht nochmal von vorne
         //begonnen, sondern startet bei onReentry (Zeile 65).
         furhat.listen(timeout = 8000)
-        furhat.setInputLanguage( Language.GERMAN)
+
     }
     onResponse<FrageWiederholen> {
         furhat.attend(user= current)
@@ -88,6 +92,7 @@ val Informationsdialogue : State = state(Parent) {
             englishText = "Thank you as well, it was a pleasure",
             germanText =  "Ich danke ebenfalls, es war mir eine Freude",
             turkishText = "Ben de teşekkür ederim, benim için bir zevkti",
+            romanianText = "Și eu vă mulțumesc, a fost o plăcere",
             sprache = Benutzer!!.get("sprache") as Language)
 
         delay(4000)
@@ -107,9 +112,10 @@ val Informationsdialogue : State = state(Parent) {
 
 
         furhatsay(furhat=this.furhat,
-            englishText = " Your dialysis will start at $dialysebeginn start in $raumy, at $platzx",
-            germanText =  " Ihre Dialyse beginnt um $dialysebeginn im $raumy, am $platzx",
-            turkishText = "Diyaliziniz $raumy'de, $platzx'de $dialysebeginn başlangıcında başlayacaktır",
+            englishText = " Your dialysis will start at $dialysebeginn start in room $raumy, bed $platzx",
+            germanText =  " Ihre Dialyse beginnt um $dialysebeginn im Raum $raumy, am platz $platzx",
+            turkishText = "Diyaliziniz oda $raumy'de, yer $platzx'de $dialysebeginn başlangıcında başlayacaktır",
+            romanianText = "Dializa dumneavoastră va începe la $dialysebeginn in camera $raumy, la locul $platzx",
             sprache = Benutzer!!.get("sprache") as Language)
 
 

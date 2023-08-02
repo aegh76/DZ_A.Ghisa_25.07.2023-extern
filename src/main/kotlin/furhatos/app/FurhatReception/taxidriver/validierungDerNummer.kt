@@ -22,6 +22,7 @@ val ValidierungNummerKunde : State = state(Parent) {
             englishText = "The patient number is ${patientennummerAsDigits}, is that correct?",
             germanText =  "Die Patientennummer ist ${patientennummerAsDigits}, stimmt das?",
             turkishText = "Hasta numarası ${patientennummerAsDigits}, doğru mu?",
+            romanianText = "Numărul pacientului este ${patientennummerAsDigits}, este corect?",
             sprache = Benutzer!!.get("sprache") as Language
 
         )
@@ -64,6 +65,8 @@ val ValidierungNummerKunde : State = state(Parent) {
                         " Empfang nach. Ich wünsche Ihnen einen schönen Tag",
                 turkishText = "Maalesef, elimdeki doluluk planında yer almıyorsunuz, lütfen" +
                         "Resepsiyon. İyi günler dilerim",
+                romanianText = "Din păcate, nu vă aflați pe planul de ocupare pe care îl am, vă rog să întrebați la" +
+                        "la recepție. Vă doresc o zi bună",
                 sprache = Benutzer!!.get("sprache") as Language)
 
 
@@ -86,6 +89,8 @@ val ValidierungNummerKunde : State = state(Parent) {
                     " Danke",
             turkishText = "Lütfen hasta numarasını benim için tek tek okur musunuz?" +
             "Teşekkür ederim",
+            romanianText = "Poți să-mi recitești, te rog, numărul pacientului unul câte unul" +
+                    "Mulțumesc",
             sprache = Benutzer!!.get("sprache") as Language)
 
 
